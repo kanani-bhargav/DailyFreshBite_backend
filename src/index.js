@@ -27,7 +27,7 @@ app.use(cors());
 app.options("*", cors());
 
 /** upload image */
-// app.use(express.static(`./public`));
+app.use(express.static(`${__dirname}./public`));
 
 app.use("/v1",routes);
 
@@ -41,5 +41,5 @@ connectDB();
 const server = http.createServer(app);
 
 server.listen(config.port, () => {
-    console.log("=====Server is running on port: " + config.port + " =====")
+    console.log(`server is listining on port ${config.port}`)
 });

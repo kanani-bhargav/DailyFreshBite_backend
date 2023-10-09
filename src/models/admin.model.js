@@ -1,52 +1,53 @@
 const mongoose = require("mongoose");
 
-// Creating schema for admin
-const admin_Schema = new mongoose.Schema(
-    {
-        admin_name:{
-            type:String,
-            trim:true
-        },
-        res_list:[
-                {
-                    restaurant_name:{
-                        type:mongoose.Types.ObjectId,
-                        ref:"Restaurant"
-                    }
-                },
-                {
-                    restaurant_name:{
-                        type:mongoose.Types.ObjectId,
-                        ref:"Restaurant"
-                    }
-                },
-                {
-                    restaurant_name:{
-                        type:mongoose.Types.ObjectId,
-                        ref:"Restaurant"
-                    }
-                },
-                {
-                    restaurant_name:{
-                        type:mongoose.Types.ObjectId,
-                        ref:"Restaurant"
-                    }
-                },
-        ],
-        verified:{
-            type:Boolean,
-            default:true
-        },
-        status:{
-            type:Boolean,
-            default:true
-        }
+/**creating admin schema */
+const adminSchema = new mongoose.Schema(
+  {
+    admin_name: {
+      type: String,
+      trim: true,
     },
-    {
-        timestamps:true,
-        versionKey:false
-    }
-)
-// Declaring model for admin
-const admin = mongoose.model("Admin",admin_Schema);
-module.exports = admin
+    res_list: [
+      {
+        restaurant_name: {
+          type: mongoose.Types.ObjectId,
+          ref: "restaurant",
+        },
+      },
+      {
+        restaurant_name: {
+          type: mongoose.Types.ObjectId,
+          ref: "restaurant",
+        },
+      },
+      {
+        restaurant_name: {
+          type: mongoose.Types.ObjectId,
+          ref: "restaurant",
+        },
+      },
+      {
+        restaurant_name: {
+          type: mongoose.Types.ObjectId,
+          ref: "restaurant",
+        },
+      },
+    ],
+    verified: {
+      type: Boolean,
+      default: true,
+    },
+    status: {
+      type: Boolean,
+      default: true,
+    },
+  },
+  {
+    timestamps: true,
+    versionKey: false,
+  }
+);
+
+/**creating admin model */
+const Admin = mongoose.model("admin", adminSchema);
+module.exports = Admin;

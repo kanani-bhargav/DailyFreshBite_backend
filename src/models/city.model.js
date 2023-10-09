@@ -1,26 +1,27 @@
 const mongoose = require("mongoose");
 
-// new keyword is optional in following block of code
-const city_Schema = new mongoose.Schema(
-    {
-        city_name: {
-            type:String,
-            trim:true
-        },
-        state: {
-            type:mongoose.Types.ObjectId,
-            ref:"State"
-        },
-        country: {
-            type:mongoose.Types.ObjectId,
-            ref:"Country"
-        }
+/**creating city schema */
+const citySchema = new mongoose.Schema(
+  {
+    city_name: {
+      type: String,
+      trim: true,
     },
-    {
-        timestamps: true,
-        versionKey: false
-    }
-)
+    state: {
+      type: mongoose.Types.ObjectId,
+      ref: "state",
+    },
+    country: {
+      type: mongoose.Types.ObjectId,
+      ref: "country",
+    },
+  },
+  {
+    timestamps: true,
+    versionKey: false,
+  }
+);
 
-const city = mongoose.model("City",city_Schema);
-module.exports = city;
+/**creating city model */
+const City = mongoose.model("city", citySchema);
+module.exports = City;

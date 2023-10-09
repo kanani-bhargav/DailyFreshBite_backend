@@ -1,33 +1,34 @@
 const mongoose = require("mongoose");
-
-const order_Schema = new mongoose.Schema(
-    {
-        order_status :{
-            type:String,
-            enum:["place","cancel","reject"]
-        },
-        payment_method:{
-            type:String,
-            trim:true
-        },
-        cart:{
-            type:mongoose.Types.ObjectId,
-            ref:"Cart"
-        },
-        user:{
-            type:mongoose.Types.ObjectId,
-            ref:"User"
-        },
-        is_active:{
-            type:Boolean,
-            default:true
-        }
+/**creating order schema */
+const orderSchema = new mongoose.Schema(
+  {
+    order_status: {
+      type: String,
+      enum: ["place", "cancel", "reject"],
     },
-    {
-        timestamps: true,
-        versionKey: false
-    }
+    payment_method: {
+      type: String,
+      trim: true,
+    },
+    cart: {
+      type: mongoose.Types.ObjectId,
+      ref: "cart",
+    },
+    user: {
+      type: mongoose.Types.ObjectId,
+      ref: "user",
+    },
+    is_active: {
+      type: Boolean,
+      default: true,
+    },
+  },
+  {
+    timestamps: true,
+    versionKey: false,
+  }
 );
 
-const order = mongoose.model("Order",order_Schema)
-module.exports = order;
+/**creating order model */
+const Order = mongoose.model("order", orderSchema);
+module.exports = Order;

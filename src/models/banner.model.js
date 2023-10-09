@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
-const banner_Schema = mongoose.Schema(
+/**creating banner schema */
+const bannerSchema = mongoose.Schema(
   {
     banner_name: {
       type: String,
@@ -16,7 +17,7 @@ const banner_Schema = mongoose.Schema(
     },
     food: {
       type: mongoose.Types.ObjectId,
-      ref: "Food",
+      ref: "food",
     },
     is_active: {
       type: Boolean,
@@ -27,8 +28,9 @@ const banner_Schema = mongoose.Schema(
     timestamps: true,
     versionKey: false,
   }
-);
+  );
+  
+  /**creating banner model */
+  const Banner = mongoose.model("banner", bannerSchema);
 
-const banner = mongoose.model("Banner", banner_Schema);
-
-module.exports = banner;
+module.exports = Banner;
